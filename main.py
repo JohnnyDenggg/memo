@@ -15,6 +15,10 @@ import os
 import requests
 
 Style = '''
+        QCheckBox
+        {
+        margin-left:13px;
+        }
         QHeaderView     
         {
         border: none;
@@ -334,11 +338,23 @@ class MainUi(QMainWindow):
         for row, i in enumerate(data):
             self.todoTableWidget.setItem(row, 0, QTableWidgetItem(i["taskname"]))
             self.checkBox = QCheckBox()
+            self.checkBox.stateChanged.connect(self.handleCheckbox)
             self.checkBox.setChecked(i["status"])
             self.todoTableWidget.setCellWidget(row, 1, self.checkBox)
             self.todoTableWidget.setItem(row, 2, QTableWidgetItem(i["details"]))
             self.todoTableWidget.setRowHeight(row, 35)
 
+    def handleCheckbox(self,statuNum):
+        print(statuNum)
+        s = self.todoTableWidget.sender()  # 获取发信号的对象
+        print(s.isChecked())
+        index = self.todoTableWidget.indexAt(s.pos())  # 获取对象在表中的位置
+        row = index.row()
+        col = index.column()
+        print(row, col)
+        if s.isChecked() == True:
+            print('1')
+        pass
 
 
 
