@@ -50,9 +50,11 @@ def getTodoData():
         details = q.value(2)
         data.append({'taskname': taskname, 'status': status,'details':details})
         i += 1
-    print(data,i)
+    # print(data,i)
     db.close()
     return data,i
+
+
 
 
 

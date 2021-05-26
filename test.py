@@ -257,10 +257,10 @@ class MainUi(QMainWindow):
         self.left_visit.clicked.connect(self.maxOrNormal)
         self.left_mini.clicked.connect(self.clickmini)
 
+        self.todoTableWidget.cellChanged().connect(self.test())
 
-
-        # self.todoTableWidget.customContextMenuRequested.connect(self.generateMenu)
-        # # tab.resize(200,200)
+    def test(self):
+        print('a')
 
     # 获取首页天气信息并显示
     def getWeather(self):
